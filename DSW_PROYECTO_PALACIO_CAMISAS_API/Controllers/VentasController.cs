@@ -28,7 +28,20 @@ namespace DSW_PROYECTO_PALACIO_CAMISAS_API.Controllers
                 tipo_pago = v.tipo_pago,
                 fecha = v.fecha,
                 precio_total = v.precio_total,
-                estado = v.estado
+                estado = v.estado,
+                detalles = v.detalles?.Select(d => new DetalleVentaDto
+                {
+                    id_camisa = d.id_camisa,
+                    producto = $"{d.marca_nombre} - {d.camisa_color} - {d.camisa_manga} - {d.camisa_talla}",
+                    descripcion = d.camisa_descripcion ?? "",
+                    color = d.camisa_color ?? "",
+                    talla = d.camisa_talla ?? "",
+                    manga = d.camisa_manga ?? "",
+                    marca = d.marca_nombre ?? "",
+                    cantidad = d.cantidad,
+                    precio = d.precio,
+                    estado = d.estado
+                }).ToList() ?? new List<DetalleVentaDto>()
             }).ToList();
 
             return Ok(ventasDto);
@@ -41,7 +54,31 @@ namespace DSW_PROYECTO_PALACIO_CAMISAS_API.Controllers
             if (venta == null)
                 return NotFound();
 
-            return Ok(venta);
+            var ventaDto = new VentaDto
+            {
+                id_venta = venta.id_venta,
+                nombre_cliente = venta.nombre_cliente,
+                dni_cliente = venta.dni_cliente,
+                tipo_pago = venta.tipo_pago,
+                fecha = venta.fecha,
+                precio_total = venta.precio_total,
+                estado = venta.estado,
+                detalles = venta.detalles?.Select(d => new DetalleVentaDto
+                {
+                    id_camisa = d.id_camisa,
+                    producto = $"{d.marca_nombre} - {d.camisa_color} - {d.camisa_manga} - {d.camisa_talla}",
+                    descripcion = d.camisa_descripcion ?? "",
+                    color = d.camisa_color ?? "",
+                    talla = d.camisa_talla ?? "",
+                    manga = d.camisa_manga ?? "",
+                    marca = d.marca_nombre ?? "",
+                    cantidad = d.cantidad,
+                    precio = d.precio,
+                    estado = d.estado
+                }).ToList() ?? new List<DetalleVentaDto>()
+            };
+
+            return Ok(ventaDto);
         }
 
         [HttpPost]
@@ -67,6 +104,17 @@ namespace DSW_PROYECTO_PALACIO_CAMISAS_API.Controllers
 
             var nuevaVenta = await Task.Run(() => ventaDB.Registrar(venta, detalles));
             return Ok(nuevaVenta);
+        }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> ActualizarEstado(int id, [FromBody] VentaUpdateDto ventaDto)
+        {
+            var actualizado = await Task.Run(() => ventaDB.ActualizarEstado(id, ventaDto.estado));
+
+            if (!actualizado)
+                return NotFound();
+
+            return Ok(new { mensaje = $"Venta {ventaDto.estado.ToLower()} correctamente", success = true });
         }
     }
 }
