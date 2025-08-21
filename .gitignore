@@ -1,0 +1,23 @@
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Build results
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Tt]emp/
+
+# Packages
+*.nupkg
+*.snupkg
+*.nuspec
+*.cache
+*.config
+packages/
+
+# Otros
+*.launchSettings.json
