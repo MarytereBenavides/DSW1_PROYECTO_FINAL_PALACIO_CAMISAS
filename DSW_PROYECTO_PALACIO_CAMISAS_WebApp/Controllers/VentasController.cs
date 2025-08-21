@@ -20,44 +20,41 @@ namespace DSW_PROYECTO_PALACIO_CAMISAS_WebApp.Controllers
             {
                 new Venta
                 {
-                    Id_Venta = 1,
-                    Nombre_Cliente = "Juan Pérez",
-                    Dni_Cliente = "12345678",
-                    Tipo_Pago = "Efectivo",
-                    Fecha = DateTime.Now,
-                    Detalles = new List<DetalleVenta>
+                    id_venta = 1,
+                    nombre_cliente = "Juan Pérez",
+                    dni_cliente = "12345678",
+                    tipo_pago = "Efectivo",
+                    fecha = DateTime.Now,
+                    detalles = new List<DetalleVenta>
                     {
                         new DetalleVenta
                         {
                             Id_Camisa = 1,
                             Cantidad = 2,
                             Precio = 50,
-                            Camisa = new Camisa { Descripcion = "Camisa Azul", Color = "Azul", Talla = "M" }
                         },
                         new DetalleVenta
                         {
                             Id_Camisa = 2,
                             Cantidad = 1,
                             Precio = 70,
-                            Camisa = new Camisa { Descripcion = "Camisa Roja", Color = "Rojo", Talla = "L" }
                         }
                     }
                 },
                 new Venta
                 {
-                    Id_Venta = 2,
-                    Nombre_Cliente = "María Gómez",
-                    Dni_Cliente = "87654321",
-                    Tipo_Pago = "Tarjeta",
-                    Fecha = DateTime.Now.AddDays(-1),
-                    Detalles = new List<DetalleVenta>
+                    id_venta = 2,
+                    nombre_cliente = "María Gómez",
+                    dni_cliente = "87654321",
+                    tipo_pago = "Tarjeta",
+                    fecha = DateTime.Now.AddDays(-1),
+                    detalles = new List<DetalleVenta>
                     {
                         new DetalleVenta
                         {
                             Id_Camisa = 3,
                             Cantidad = 3,
-                            Precio = 45,
-                            Camisa = new Camisa { Descripcion = "Camisa Blanca", Color = "Blanco", Talla = "S" }
+                            Precio = 45
                         }
                     }
                 }
@@ -84,11 +81,11 @@ namespace DSW_PROYECTO_PALACIO_CAMISAS_WebApp.Controllers
 
             vm.Lineas.Add(new DetalleVentaTotal
             {
-                Id_Camisa = camisa.Id_Camisa,
-                Descripcion = camisa.Descripcion,
-                Presentacion = $"{camisa.Color} / {camisa.Talla} / {camisa.Manga}",
+                Id_Camisa = camisa.id_camisa,
+                Descripcion = camisa.descripcion,
+                Presentacion = $"{camisa.color} / {camisa.talla} / {camisa.manga}",
                 Cantidad = vm.Cantidad,
-                PrecioUnitario = vm.PrecioUnitario > 0 ? vm.PrecioUnitario : camisa.Precio_Venta
+                PrecioUnitario = vm.PrecioUnitario > 0 ? vm.PrecioUnitario : camisa.precio_venta
             });
             // limpia selección
             vm.CamisaSeleccionadaId = null; vm.Cantidad = 1; vm.PrecioUnitario = 0;
@@ -131,10 +128,10 @@ namespace DSW_PROYECTO_PALACIO_CAMISAS_WebApp.Controllers
 
             var dto = new Venta
             {
-                Nombre_Cliente = venta.Nombre_Cliente,
-                Dni_Cliente = venta.Dni_Cliente,
-                Tipo_Pago = venta.Tipo_Pago,
-                Detalles = venta.Lineas.Select(l => new DetalleVenta
+                nombre_cliente = venta.Nombre_Cliente,
+                dni_cliente = venta.Dni_Cliente,
+                tipo_pago = venta.Tipo_Pago,
+                detalles = venta.Lineas.Select(l => new DetalleVenta
                 {
                     Id_Camisa = l.Id_Camisa,
                     Cantidad = l.Cantidad,

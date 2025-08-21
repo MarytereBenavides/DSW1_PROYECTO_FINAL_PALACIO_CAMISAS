@@ -7,15 +7,15 @@
         @foreach (var c in Model)
         {
             <tr>
-                <td>@c.Id_Camisa</td>
-                <td>@c.Descripcion</td>
-                <td>@c.Marca</td>
-                <td>@c.Color</td>
-                <td>@c.Talla</td>
-                <td>@c.Manga</td>
-                <td>@c.Precio_Venta.ToString("0.00")</td>
-                <td>@c.Stock</td>
-                <td class="text-end"><button type="button" class="btn btn-sm btn-outline-success" onclick="seleccionarCamisa(@c.Id_Camisa)">Elegir</button></td>
+                <td>@c.id_camisa</td>
+                <td>@c.descripcion</td>
+                <td>@c.marca_nombre</td>
+                <td>@c.color</td>
+                <td>@c.talla</td>
+                <td>@c.manga</td>
+                <td>@c.precio_venta.ToString("0.00")</td>
+                <td>@c.stock</td>
+                <td class="text-end"><button type="button" class="btn btn-sm btn-outline-success" onclick="seleccionarCamisa(@c.id_camisa)">Elegir</button></td>
             </tr>
         }
     </tbody>

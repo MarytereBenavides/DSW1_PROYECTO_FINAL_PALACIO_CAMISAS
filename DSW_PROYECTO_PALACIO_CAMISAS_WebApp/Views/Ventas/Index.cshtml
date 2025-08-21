@@ -16,12 +16,12 @@
         <div class="card-header bg-dark text-white">
             <div class="d-flex justify-content-between">
                 <span>
-                    <strong>Venta N°:</strong> @venta.Id_Venta  |
-                    <strong>Cliente:</strong> @venta.Nombre_Cliente  |
-                    <strong>Fecha:</strong> @venta.Fecha.ToString("dd/MM/yyyy")
+                    <strong>Venta N°:</strong> @venta.id_venta  |
+                    <strong>Cliente:</strong> @venta.nombre_cliente  |
+                    <strong>Fecha:</strong> @venta.fecha.ToString("dd/MM/yyyy")
                 </span>
                 <span>
-                    <strong>Total: </strong> S/. @venta.Precio_Total
+                    <strong>Total: </strong> S/. @venta.precio_total
                 </span>
             </div>
         </div>
@@ -51,9 +51,9 @@
             </table>
         </div>
         <div class="card-footer text-end">
-            <a asp-action="Details" asp-route-id="@venta.IdVenta" class="btn btn-info btn-sm">Ver Detalle</a>
-            <a asp-action="Edit" asp-route-id="@venta.IdVenta" class="btn btn-warning btn-sm">Editar</a>
-            <a asp-action="Delete" asp-route-id="@venta.IdVenta" class="btn btn-danger btn-sm">Eliminar</a>
+            <a asp-action="Details" asp-route-id="@venta.id_venta" class="btn btn-info btn-sm">Ver Detalle</a>
+            <a asp-action="Edit" asp-route-id="@venta.id_venta" class="btn btn-warning btn-sm">Editar</a>
+            <a asp-action="Delete" asp-route-id="@venta.id_venta" class="btn btn-danger btn-sm">Eliminar</a>
         </div>
     </div>
 }

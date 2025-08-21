@@ -39,19 +39,18 @@
         @foreach (var c in Model)
         {
             <tr>
-                <td>@c.Id_Camisa</td>
-                <td>@c.Descripcion</td>
-                <td>@c.Marca</td>
-                <td>@c.Color</td>
-                <td>@c.Talla</td>
-                <td>@c.Manga</td>
-                <td>@c.Stock</td>
-                <td>@c.Precio_Venta.ToString("0.00")</td>
-                <td>@c.Estante</td>
+                <td>@c.id_camisa</td>
+                <td>@c.descripcion</td>
+                <td>@c.marca_nombre</td>
+                <td>@c.color</td>
+                <td>@c.talla</td>
+                <td>@c.manga</td>
+                <td>@c.stock</td>
+                <td>@c.precio_venta.ToString("0.00")</td>
                 <td class="text-end">
-                    <a asp-action="Details" asp-route-id="@c.Id_Camisa" class="btn btn-sm btn-info">Ver</a>
-                    <a asp-action="Edit" asp-route-id="@c.Id_Camisa" class="btn btn-sm btn-warning">Editar</a>
-                    <form asp-action="Delete" asp-route-id="@c.Id_Camisa" method="post" class="d-inline">
+                    <a asp-action="Details" asp-route-id="@c.id_camisa" class="btn btn-sm btn-info">Ver</a>
+                    <a asp-action="Edit" asp-route-id="@c.id_camisa" class="btn btn-sm btn-warning">Editar</a>
+                    <form asp-action="Delete" asp-route-id="@c.id_camisa" method="post" class="d-inline">
                         <button class="btn btn-sm btn-danger" onclick="return confirm('¿Eliminar?')">Eliminar</button>
                     </form>
                 </td>

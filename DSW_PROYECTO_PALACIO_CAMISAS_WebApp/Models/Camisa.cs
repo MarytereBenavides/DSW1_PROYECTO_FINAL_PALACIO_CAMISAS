@@ -1,20 +1,25 @@
-﻿namespace DSW_PROYECTO_PALACIO_CAMISAS_WebApp.Models
+﻿using System.Text.Json.Serialization;
+
+namespace DSW_PROYECTO_PALACIO_CAMISAS_WebApp.Models
 {
     public class Camisa
     {
-        public int Id_Camisa { get; set; }
-        public string Descripcion { get; set; } = "";
-        public int Id_Marca { get; set; }
-        public string Color { get; set; } = "";
-        public string Talla { get; set; } = "";
-        public string Manga { get; set; } = "";
-        public int Stock { get; set; }
-        public decimal Precio_Costo { get; set; }
-        public decimal Precio_Venta { get; set; }
-        public int Id_Estante { get; set; }
-        public string Estado { get; set; } = "";
-        // opcional para mostrar en tablas
-        public string? Marca { get; set; }
-        public string? Estante { get; set; }
+        public int id_camisa { get; set; }
+        public string descripcion { get; set; }
+        public int id_marca { get; set; }
+        public string color { get; set; }
+        public string talla { get; set; }
+        public string manga { get; set; }
+        public int stock { get; set; }
+        public decimal precio_costo { get; set; }
+        public decimal precio_venta { get; set; }
+        public int id_estante { get; set; }
+        public string estado { get; set; }
+
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public string? marca_nombre { get; set; }
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public string? estante_descripcion { get; set; }
+        
     }
 }
